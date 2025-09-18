@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Herbs Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e8f5e8;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d5a2d;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .herbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .herb-module {
+            background: linear-gradient(135deg, #f0f8f0, #e0f0e0);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 2px solid #c8e6c8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .herb-module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .plant-name {
+            font-size: 1.8em;
+            color: #1a4a1a;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .state-info {
+            font-size: 1.1em;
+            color: #2d5a2d;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .benefits {
+            font-size: 1em;
+            color: #3d6a3d;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .view-btn {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+        }
+
+        .view-btn:hover {
+            background: linear-gradient(135deg, #45a049, #3d8b40);
+            transform: scale(1.05);
+        }
+
+        .trace-btn {
+            background: linear-gradient(135deg, #8bc34a, #7cb342);
+            color: white;
+        }
+
+        .trace-btn:hover {
+            background: linear-gradient(135deg, #7cb342, #689f38);
+            transform: scale(1.05);
+        }
+
+        .herb-image {
+            width: 100%;
+            max-width: 250px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Ayurvedic Herbs Collection 🌿</h1>
+        
+        <div class="herbs-grid">
+            <!-- Tulsi Module -->
+            <div class="herb-module">
+                <div class="plant-name">Tulsi</div>
+                <div class="state-info">📍 State: Kerala</div>
+                <div class="benefits">💚 Benefits: Antioxidant properties, boosts immunity, reduces stress, supports respiratory health, and has anti-inflammatory effects.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('tulsi')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('tulsi')">Trace</button>
+                </div>
+                <div class="image-container" id="tulsi-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1609501676725-7186f757a69d?w=400&h=300&fit=crop" alt="Tulsi Plant" class="herb-image">
+                </div>
+            </div>
+
+            <!-- Ashwagandha Module -->
+            <div class="herb-module">
+                <div class="plant-name">Ashwagandha</div>
+                <div class="state-info">📍 State: Rajasthan</div>
+                <div class="benefits">💚 Benefits: Adaptogenic herb, reduces anxiety, improves sleep quality, enhances energy levels, and supports adrenal health.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('ashwagandha')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('ashwagandha')">Trace</button>
+                </div>
+                <div class="image-container" id="ashwagandha-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Ashwagandha Plant" class="herb-image">
+                </div>
+            </div>
+
+            <!-- Neem Module -->
+            <div class="herb-module">
+                <div class="plant-name">Neem</div>
+                <div class="state-info">📍 State: Tamil Nadu</div>
+                <div class="benefits">💚 Benefits: Natural antiseptic, purifies blood, supports skin health, aids digestion, and has antimicrobial properties.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('neem')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('neem')">Trace</button>
+                </div>
+                <div class="image-container" id="neem-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=300&fit=crop" alt="Neem Plant" class="herb-image">
+                </div>
+            </div>
+
+            <!-- Brahmi Module -->
+            <div class="herb-module">
+                <div class="plant-name">Brahmi</div>
+                <div class="state-info">📍 State: Karnataka</div>
+                <div class="benefits">💚 Benefits: Enhances memory and cognitive function, reduces stress, supports nervous system, and promotes mental clarity.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('brahmi')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('brahmi')">Trace</button>
+                </div>
+                <div class="image-container" id="brahmi-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Brahmi Plant" class="herb-image">
+                </div>
+            </div>
+
+            <!-- Turmeric Module -->
+            <div class="herb-module">
+                <div class="plant-name">Turmeric</div>
+                <div class="state-info">📍 State: Andhra Pradesh</div>
+                <div class="benefits">💚 Benefits: Powerful anti-inflammatory, antioxidant properties, supports joint health, aids digestion, and boosts immunity.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('turmeric')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('turmeric')">Trace</button>
+                </div>
+                <div class="image-container" id="turmeric-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=300&fit=crop" alt="Turmeric Plant" class="herb-image">
+                </div>
+            </div>
+
+            <!-- Amla Module -->
+            <div class="herb-module">
+                <div class="plant-name">Amla</div>
+                <div class="state-info">📍 State: Uttar Pradesh</div>
+                <div class="benefits">💚 Benefits: Rich in Vitamin C, antioxidant properties, supports hair health, boosts immunity, and aids digestion.</div>
+                <div class="button-container">
+                    <button class="btn view-btn" onclick="toggleImage('amla')">View</button>
+                    <button class="btn trace-btn" onclick="traceHerb('amla')">Trace</button>
+                </div>
+                <div class="image-container" id="amla-image" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" alt="Amla Plant" class="herb-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleImage(herbName) {
+            const imageContainer = document.getElementById(herbName + '-image');
+            
+            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
+                imageContainer.style.display = 'block';
+                imageContainer.classList.add('fade-in');
+            } else {
+                imageContainer.style.display = 'none';
+                imageContainer.classList.remove('fade-in');
+            }
+        }
+
+        function traceHerb(herbName) {
+            alert(`Tracing information for ${herbName.charAt(0).toUpperCase() + herbName.slice(1)}...\n\nThis feature would typically:\n• Show cultivation details\n• Display growth timeline\n• Provide harvesting information\n• Show quality parameters`);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const modules = document.querySelectorAll('.herb-module');
+            
+            modules.forEach(module => {
+                module.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                module.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
